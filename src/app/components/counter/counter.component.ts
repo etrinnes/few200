@@ -17,6 +17,10 @@ export class CounterComponent implements OnInit {
     this.count$ = this.store.select(getCurrent);
   }
 
+  reset() {
+    this.store.dispatch({ type: 'reset' });
+  }
+
   increment() {
     this.store.dispatch({ type: 'increment' });
   }

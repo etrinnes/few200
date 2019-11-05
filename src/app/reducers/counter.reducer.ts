@@ -10,6 +10,9 @@ const initialState: CounterState = {
 
 export function reducer(state: CounterState = initialState, action: Action): CounterState {
   switch (action.type) {
+    case 'reset': {
+      return initialState;
+    }
     case 'increment': {
       // return a whole new CounterState
       return {
