@@ -30,4 +30,12 @@ export const { selectAll: selectMovieListArray } = fromList.adapter.getSelectors
 // 4. What the components need
 
 // Todo: we need a selector that returns a MovieListItem[] for our list.
-export const selectMovieListItems = createSelector(selectMovieListArray, (movies) => (movies as MovieListItem[]));
+export const selectMovieListItems = createSelector(
+  selectMovieListArray,
+  (movies) => movies.map(movie => ({
+    id: movie.id,
+    title: movie.title,
+    rentalPrice: movie.rentalPrice,
+    rentalDays: movie.rentalDays,
+    isTemporary: movie.id.startsWith('T')
+  } as MovieListItem)));
