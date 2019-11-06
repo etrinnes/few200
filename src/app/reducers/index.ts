@@ -1,4 +1,4 @@
-import { createSelector } from '@ngrx/store';
+import { createSelector, createFeatureSelector } from '@ngrx/store';
 import * as fromCounter from './counter.reducer';
 import { FizzBuzz } from '../components/counter/models';
 
