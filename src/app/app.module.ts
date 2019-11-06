@@ -15,6 +15,9 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './reducers';
 import { CounterComponent } from './components/counter/counter.component';
+import { EffectsModule } from '@ngrx/effects';
+import { CounterEffects } from './effects/counter.effects';
+import { FizzBuzzComponent } from './components/counter/fizz-buzz/fizz-buzz.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +29,15 @@ import { CounterComponent } from './components/counter/counter.component';
     EntryComponent,
     ListComponent,
     StatusComponent,
-    CounterComponent
+    CounterComponent,
+    FizzBuzzComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([CounterEffects])
   ],
   providers: [TodoDataService],
   bootstrap: [AppComponent]
