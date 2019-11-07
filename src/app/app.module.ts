@@ -19,6 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CounterEffects } from './effects/counter.effects';
 import { FizzBuzzComponent } from './components/counter/fizz-buzz/fizz-buzz.component';
 import { MoviesModule } from './features/movies/movies.module';
+import { BooksModule } from './features/books/books.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MoviesModule } from './features/movies/movies.module';
   ],
   imports: [
     MoviesModule,
+    BooksModule,
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
