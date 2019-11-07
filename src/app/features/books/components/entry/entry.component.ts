@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BooksState } from '../../reducers';
 import { addBook } from '../../actions/list.actions';
-import { FormsModule } from '@angular/forms';
 import { BookListItem } from '../../models/book-list-item.model';
 
 @Component({
@@ -14,29 +13,27 @@ export class EntryComponent implements OnInit {
 
   @Input() model: BookListItem;
   constructor(private store: Store<BooksState>) {
-    this.model = { id: '', title: '', author: '', format: '' };
+    this.model = { id: '', title: '', author: '', format: '', onLoan: false };
   }
 
   ngOnInit() {
   }
 
-  add(titleEl: HTMLInputElement, authorEl: HTMLInputElement, formatEl: HTMLSelectElement) {
+  add(titleEl: HTMLInputElement, authorEl: HTMLInputElement, formatEl: HTMLSelectElement, onLoan: HTMLInputElement) {
     const itemToAdd = {
       title: titleEl.value,
       author: authorEl.value,
-      format: formatEl.value
+      format: formatEl.value,
+      onLoan: onLoan.checked
     };
 
-    // TODO replace this with a dispatch. we need an action
-    // dispatched to the store
-    // we need ids
-    // for now add a fake id, add it to the state, then update after it
+    console.log(onLoan.checked);
     this.store.dispatch(addBook({ ...itemToAdd }));
     console.log(itemToAdd);
-    this.model = { id: '', title: '', author: '', format: '' };
+    // this.model = { id: '', title: '', author: '', format: '' };
     titleEl.value = '';
     authorEl.value = '';
-    formatEl.value = 'Hard-cover';
+    formatEl.value = 'Hardcover';
     titleEl.focus();
   }
 

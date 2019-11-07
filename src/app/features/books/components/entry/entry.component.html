@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container space-stuff">
   <form #bookForm="ngForm">
     <div class="form-group">
       <label for="title">Title</label>
@@ -14,37 +14,47 @@
           Name is required.
         </div>
       </div>
-      <div class="form-group">
-        <label for="author">Author</label>
-        <input class="form-control"
-               id="author"
-               name="author"
-               class="form-control"
-               required
-               [(ngModel)]="model.author"
-               #author="ngModel">
-        <div *ngIf="author.invalid && (author.dirty || author.touched)"
-             class="alert alert-danger">
-          <div *ngIf="author.errors['required']">
-            Author is required.
-          </div>
+    </div>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input class="form-control"
+             id="author"
+             name="author"
+             class="form-control"
+             required
+             [(ngModel)]="model.author"
+             #author="ngModel">
+      <div *ngIf="author.invalid && (author.dirty || author.touched)"
+           class="alert alert-danger">
+        <div *ngIf="author.errors['required']">
+          Author is required.
         </div>
       </div>
-      <div class="form-group">
-        <label for="format">Format</label>
-        <select class="form-control"
-                #format
-                name="format">
-          <option value="Hardcover">HardCover</option>
-          <option value="Paperback">Paperback</option>
-          <option value="E-book">E-Book</option>
-        </select>
-      </div>
-      <input type="button"
-             (click)="add(title, author, format)"
-             [disabled]="title.invalid || author.invalid"
-             class="btn btn-success"
-             value="Add This Book">
     </div>
+    <div class="form-group">
+      <label for="format">Format</label>
+      <select class="form-control"
+              #format
+              name="format">
+        <option value="Hardcover">HardCover</option>
+        <option value="Paperback">Paperback</option>
+        <option value="E-book">E-Book</option>
+      </select>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input"
+             type="checkbox"
+             value=""
+             id="onLoan"
+             #onLoan>
+      <label class="form-check-label">
+        On loan
+      </label>
+    </div>
+    <input type="button"
+           (click)="add(title, author, format, onLoan)"
+           [disabled]="title.invalid || author.invalid"
+           class="btn btn-success"
+           value="Add This Book">
   </form>
 </div>

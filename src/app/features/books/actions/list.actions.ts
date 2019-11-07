@@ -1,15 +1,29 @@
 import { BookEntity } from '../reducers/list.reducer';
 import { createAction, props } from '@ngrx/store';
 
-let id = 2;
+let id = 1;
 export const addBook = createAction(
   '[books] added a book',
-  ({ title, author, format }: { title: string, author: string, format: string }) => ({
+  ({ title, author, format, onLoan }: { title: string, author: string, format: string, onLoan: boolean }) => ({
     payload: {
-      id: 'A' + (id++).toString(),
+      id: 'T' + (id++).toString(),
       title,
       author,
-      format
+      format,
+      onLoan
+    } as BookEntity
+  })
+);
+
+export const addLoanedBook = createAction(
+  '[books] added a loaned book',
+  ({ title, author, format, onLoan }: { title: string, author: string, format: string, onLoan: boolean }) => ({
+    payload: {
+      id: 'T' + (id++).toString(),
+      title,
+      author,
+      format,
+      onLoan
     } as BookEntity
   })
 );

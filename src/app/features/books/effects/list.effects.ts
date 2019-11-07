@@ -16,5 +16,5 @@ export class ListEffects {
       map(a => a.payload)
     ), { dispatch: false }
   );
-  constructor(private actions$: Actions, private client: HttpClient) { }
+  constructor(private actions$: Actions) { }
 }
