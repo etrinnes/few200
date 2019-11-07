@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BooksState } from '../../reducers';
+import { addBook } from '../../actions/list.actions';
 
 @Component({
   selector: 'app-entry',
@@ -25,7 +26,7 @@ export class EntryComponent implements OnInit {
     // dispatched to the store
     // we need ids
     // for now add a fake id, add it to the state, then update after it
-    // this.store.dispatch(addBook({ ...itemToAdd }));
+    this.store.dispatch(addBook({ ...itemToAdd }));
 
     console.log(itemToAdd);
     titleEl.value = '';

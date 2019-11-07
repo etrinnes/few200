@@ -1,5 +1,5 @@
 import { BookEntity } from '../reducers/list.reducer';
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
 let id = 2;
 export const addBook = createAction(
@@ -12,4 +12,14 @@ export const addBook = createAction(
       format
     } as BookEntity
   })
+);
+
+export const addBookSuccess = createAction(
+  '[books] added a book successfully',
+  props<{ oldId: string, payload: BookEntity }>()
+);
+
+export const loadBookSuccess = createAction(
+  '[books] loaded books successfully',
+  props<{ books: BookEntity[] }>()
 );

@@ -27,7 +27,12 @@ const initialState: State = {
 
 const reducerFunction = createReducer(
   initialState,
-  on(actions.addBook, (state, action) => adapter.addOne(action.payload, state))
+  on(actions.addBook, (state, action) => adapter.addOne(action.payload, state)),
+  on(actions.loadBookSuccess, (state, action) => adapter.addAll(action.books, state)),
+  on(actions.addBookSuccess, (state, action) => {
+    const tempState = adapter.removeOne(action.oldId, state);
+    return adapter.addOne(action.payload, tempState);
+  })
 );
 
 export function reducer(state: State = initialState, action: Action) {
