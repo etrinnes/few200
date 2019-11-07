@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BooksState } from '../../reducers';
 import { addBook } from '../../actions/list.actions';
+import { FormsModule } from '@angular/forms';
+import { BookListItem } from '../../models/book-list-item.model';
 
 @Component({
   selector: 'app-entry',
@@ -10,7 +12,10 @@ import { addBook } from '../../actions/list.actions';
 })
 export class EntryComponent implements OnInit {
 
-  constructor(private store: Store<BooksState>) { }
+  @Input() model: BookListItem;
+  constructor(private store: Store<BooksState>) {
+    this.model = { id: '', title: '', author: '', format: '' };
+  }
 
   ngOnInit() {
   }
@@ -27,8 +32,8 @@ export class EntryComponent implements OnInit {
     // we need ids
     // for now add a fake id, add it to the state, then update after it
     this.store.dispatch(addBook({ ...itemToAdd }));
-
     console.log(itemToAdd);
+    this.model = { id: '', title: '', author: '', format: '' };
     titleEl.value = '';
     authorEl.value = '';
     formatEl.value = 'Hard-cover';

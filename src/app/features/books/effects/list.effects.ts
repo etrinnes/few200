@@ -18,7 +18,3 @@ export class ListEffects {
   );
   constructor(private actions$: Actions, private client: HttpClient) { }
 }
-
-interface GetAllResponse {
-  books: BookEntity[];
-}
