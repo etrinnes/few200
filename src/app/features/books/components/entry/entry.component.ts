@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { BooksState } from '../../reducers';
 
 @Component({
   selector: 'app-entry',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<BooksState>) { }
 
   ngOnInit() {
   }

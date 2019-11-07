@@ -9,8 +9,7 @@ import { BookListItem } from '../../models';
 export class ListComponent implements OnInit {
 
   @Input() model: BookListItem[] = [
-    { id: '1', title: 'Pepper', author: 'Pepper Author', format: 'Hardcover' },
-    { id: '2', title: 'Pepper Book 2', author: 'Another Pepper Author', format: 'E-Book' }
+
   ];
   constructor() {
   }
